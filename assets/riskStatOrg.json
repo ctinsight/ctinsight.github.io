@@ -26,9 +26,33 @@
             "block": 639068
         },  
         {
-            "id": "2c312e7d-a080-449f-a143-07404370z9es", 
-            "orgID": "Binance.com",
+            "id": "2c212e7d-a080-449d-v143-07404370z9es", 
+            "orgID": "Coinbase",
+            "score": 1,
+            "date": 1535404189,
+            "knownAddressCount": 13003242,
+            "knownAddressForSuspiciousInteractionCount": 223498,
+            "knownInteractionCounts": 1122344322,
+            "knownSuspiciousInteractionsCount": 5089342,
+            "unknownInteractionsCount": 402344322,
+            "block": 639000
+        },  
+        {
+            "id": "2c312e7f-a020-449e-b143-07504370a9ea", 
+            "orgID": "Kraken.com",
             "score": 2,
+            "date": 1535564127,
+            "knownAddressCount": 14003242,
+            "knownAddressForSuspiciousInteractionCount": 213498,
+            "knownInteractionCounts": 102344322,
+            "knownSuspiciousInteractionsCount": 6000342,
+            "unknownInteractionsCount": 402344322,
+            "block": 550068
+        },  
+        {
+            "id": "2c322e7d-a080-449f-a1a3-07404370z9es", 
+            "orgID": "Xapo.com",
+            "score": 3,
             "date": 1535404181,
             "knownAddressCount": 12003242,
             "knownAddressForSuspiciousInteractionCount": 203498,
@@ -38,9 +62,9 @@
             "block": 539000
         },  
         {
-            "id": "2c312e7d-a020-449f-b143-07504370f9ea", 
-            "orgID": "Binance.com",
-            "score": 2,
+            "id": "2e312e7d-a020-449f-b143-07s04370f9ea", 
+            "orgID": "Bitfinex.com",
+            "score": 5,
             "date": 1535564127,
             "knownAddressCount": 14003242,
             "knownAddressForSuspiciousInteractionCount": 213498,
@@ -48,6 +72,30 @@
             "knownSuspiciousInteractionsCount": 6000342,
             "unknownInteractionsCount": 402344322,
             "block": 550068
+        },  
+        {
+            "id": "2e312e7d-a020-449t-b143-07t04370t9sa", 
+            "orgID": "genesis-mining",
+            "score": 1,
+            "date": 1535564127,
+            "knownAddressCount": 14003242,
+            "knownAddressForSuspiciousInteractionCount": 213498,
+            "knownInteractionCounts": 1023443223,
+            "knownSuspiciousInteractionsCount": 2000342,
+            "unknownInteractionsCount": 402344322,
+            "block": 550068
+        },  
+        {
+            "id": "3s312e2a-a020-449t-k143-12t04379t9sa", 
+            "orgID": "Bitstamp.net",
+            "score": 3,
+            "date": 1535564127,
+            "knownAddressCount": 24003242,
+            "knownAddressForSuspiciousInteractionCount": 2213498,
+            "knownInteractionCounts": 1223443223,
+            "knownSuspiciousInteractionsCount": 3000342,
+            "unknownInteractionsCount": 1202344322,
+            "block": 750068
         }
     ]
 }

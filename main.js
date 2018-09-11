@@ -802,120 +802,6 @@ var OrgInsightsComponent = /** @class */ (function () {
             self.organizationService.getOrgnizations().subscribe(function (data) {
                 data.orgs.sort(function (a, b) { return new Date(a.createdDate).getTime() - new Date(b.createdDate).getTime(); });
                 self.organizations = data;
-                self.allOrgs = self.organizations.orgs.length;
-                self.operationalOrgs = self.organizations.orgs.filter(function (e) { return e.operational; }).length;
-                self.totalOrgs = self.allOrgs;
-                var customeColor = [];
-                self.orgTypes.orgTypes.forEach(function (orgType) {
-                    if (!customeColor) {
-                        customeColor = [orgType.color];
-                    }
-                    else {
-                        customeColor = customeColor.concat([orgType.color]);
-                    }
-                    ;
-                    var name = orgType.name;
-                    var filterResult = self.organizations.orgs.filter(function (e) { return e.orgTypeId == orgType.id; });
-                    var allGridData = [];
-                    filterResult.forEach(function (org) {
-                        allGridData = allGridData.concat([{
-                                name: org.name,
-                                id: org.id,
-                                legacyId: org.legacyId,
-                                createdDate: org.createdDate,
-                                operational: org.operational,
-                                orgTypeId: org.orgTypeId,
-                                orgType: name,
-                                color: orgType.color
-                            }]);
-                    });
-                    self.allGridData = self.allGridData.concat(allGridData);
-                    var operationalFilterResult = self.organizations.orgs.filter(function (e) { return e.orgTypeId == orgType.id && e.operational; });
-                    var operationalGridData = [];
-                    operationalFilterResult.forEach(function (org) {
-                        operationalGridData = operationalGridData.concat([{
-                                name: org.name,
-                                id: org.id,
-                                legacyId: org.legacyId,
-                                createdDate: org.createdDate,
-                                operational: org.operational,
-                                orgTypeId: org.orgTypeId,
-                                orgType: name,
-                                color: orgType.color
-                            }]);
-                    });
-                    self.operationalGridData = self.operationalGridData.concat(operationalGridData);
-                    var resultDataList = [];
-                    var tempValue = 0;
-                    self.organizations.orgs.forEach(function (org) {
-                        if (!resultDataList) {
-                            if (org.orgTypeId == orgType.id) {
-                                tempValue += 1;
-                                resultDataList = [{ name: new Date(org.createdDate), value: tempValue }];
-                            }
-                            else {
-                                tempValue = 0;
-                                resultDataList = [{ name: new Date(org.createdDate), value: tempValue }];
-                            }
-                        }
-                        else {
-                            if (self.isInOrgDataList(resultDataList, new Date(org.createdDate)) && org.orgTypeId == orgType.id) {
-                                tempValue += 1;
-                                resultDataList[resultDataList.length - 1]['value'] = tempValue;
-                            }
-                            else if (!self.isInOrgDataList(resultDataList, new Date(org.createdDate)) && org.orgTypeId == orgType.id) {
-                                tempValue += 1;
-                                resultDataList = resultDataList.concat({ name: new Date(org.createdDate), value: tempValue });
-                            }
-                            else if (org.orgTypeId != orgType.id) {
-                                resultDataList = resultDataList.concat([{ name: new Date(org.createdDate), value: tempValue }]);
-                            }
-                        }
-                    });
-                    var operationalResultDataList = [];
-                    var operationalTempValue = 0;
-                    self.organizations.orgs.filter(function (e) { return e.operational; }).forEach(function (org) {
-                        if (!operationalResultDataList) {
-                            if (org.orgTypeId == orgType.id) {
-                                operationalTempValue += 1;
-                                operationalResultDataList = [{ name: new Date(org.createdDate), value: operationalTempValue }];
-                            }
-                            else {
-                                operationalTempValue = 0;
-                                operationalResultDataList = [{ name: new Date(org.createdDate), value: operationalTempValue }];
-                            }
-                        }
-                        else {
-                            if (self.isInOrgDataList(operationalResultDataList, new Date(org.createdDate)) && org.orgTypeId == orgType.id) {
-                                operationalTempValue += 1;
-                                operationalResultDataList[operationalResultDataList.length - 1]['value'] = operationalTempValue;
-                            }
-                            else if (!self.isInOrgDataList(operationalResultDataList, new Date(org.createdDate)) && org.orgTypeId == orgType.id) {
-                                operationalTempValue += 1;
-                                operationalResultDataList = operationalResultDataList.concat({ name: new Date(org.createdDate), value: operationalTempValue });
-                            }
-                            else if (org.orgTypeId != orgType.id) {
-                                operationalResultDataList = operationalResultDataList.concat([{ name: new Date(org.createdDate), value: operationalTempValue }]);
-                            }
-                        }
-                    });
-                    var filterResultforPie = filterResult.length;
-                    var operationalFilterResultforPie = operationalFilterResult.length;
-                    var filterResultObj = { name: orgType.name, orgs: filterResult };
-                    var operationalFilterResultObj = { name: orgType.name, orgs: operationalFilterResult };
-                    var filterResultforPieGraphObj = { name: orgType.name, value: filterResultforPie };
-                    var listFilterObj = { name: orgType.name, value: filterResultforPie, isShow: true, color: orgType.color };
-                    var operationalFilterResultforPieGraphObj = { name: orgType.name, value: operationalFilterResultforPie };
-                    var operationalListFilterObj = { name: orgType.name, value: operationalFilterResultforPie, isShow: true, color: orgType.color };
-                    self.allGraphData = self.allGraphData.concat(filterResultObj);
-                    self.operationalGraphData = self.operationalGraphData.concat(operationalFilterResultObj);
-                    self.allPieGraphData = self.allPieGraphData.concat(filterResultforPieGraphObj);
-                    self.operationalPieGraphData = self.operationalPieGraphData.concat(operationalFilterResultforPieGraphObj);
-                    self.allStackGraphData = self.allStackGraphData.concat({ name: orgType.name, series: resultDataList });
-                    self.operationalStackGraphData = self.operationalStackGraphData.concat({ name: orgType.name, series: operationalResultDataList });
-                    self.allListFilterData = self.allListFilterData.concat(listFilterObj);
-                    self.operationalListFilterData = self.operationalListFilterData.concat(operationalListFilterObj);
-                });
                 self.organizationService.getRiskStatOrg().subscribe(function (data) {
                     //sort riskStatOrg
                     data.riskStatOrg.sort(function (a, b) { return a.date < b.date; });
@@ -925,41 +811,177 @@ var OrgInsightsComponent = /** @class */ (function () {
                     data.riskStatOrg.forEach(function (org) {
                         if (!s.has(org.orgID)) {
                             s.add(org.orgID);
-                            latestRiskStatOrg.push(Object.assign({}, org));
                         }
                     });
-                    console.log(latestRiskStatOrg);
-                    //add latestRiskStatOrg data into AllGridData
-                    var tempAllGridData = [];
-                    self.allGridData.forEach(function (org) {
+                    var tempData = [];
+                    self.organizations.orgs.forEach(function (org) {
                         if (s.has(org.legacyId)) {
-                            var index = latestRiskStatOrg.map(function (riskOrg) { return riskOrg.orgID; }).indexOf(org.legacyId);
-                            tempAllGridData.push(Object.assign({}, org, latestRiskStatOrg[index]));
+                            tempData.push(Object.assign({}, org));
+                        }
+                        /*else{
+                          tempOperationalGridData.push(Object.assign({}, org));
+                        }*/
+                    });
+                    self.organizations = { orgs: tempData };
+                    self.allOrgs = self.organizations.orgs.length;
+                    self.operationalOrgs = self.organizations.orgs.filter(function (e) { return e.operational; }).length;
+                    self.totalOrgs = self.allOrgs;
+                    var customeColor = [];
+                    self.orgTypes.orgTypes.forEach(function (orgType) {
+                        if (!customeColor) {
+                            customeColor = [orgType.color];
                         }
                         else {
-                            tempAllGridData.push(Object.assign({}, org));
+                            customeColor = customeColor.concat([orgType.color]);
                         }
+                        ;
+                        var name = orgType.name;
+                        var filterResult = self.organizations.orgs.filter(function (e) { return e.orgTypeId == orgType.id; });
+                        var allGridData = [];
+                        filterResult.forEach(function (org) {
+                            allGridData = allGridData.concat([{
+                                    name: org.name,
+                                    id: org.id,
+                                    legacyId: org.legacyId,
+                                    createdDate: org.createdDate,
+                                    operational: org.operational,
+                                    orgTypeId: org.orgTypeId,
+                                    orgType: name,
+                                    color: orgType.color
+                                }]);
+                        });
+                        self.allGridData = self.allGridData.concat(allGridData);
+                        var operationalFilterResult = self.organizations.orgs.filter(function (e) { return e.orgTypeId == orgType.id && e.operational; });
+                        var operationalGridData = [];
+                        operationalFilterResult.forEach(function (org) {
+                            operationalGridData = operationalGridData.concat([{
+                                    name: org.name,
+                                    id: org.id,
+                                    legacyId: org.legacyId,
+                                    createdDate: org.createdDate,
+                                    operational: org.operational,
+                                    orgTypeId: org.orgTypeId,
+                                    orgType: name,
+                                    color: orgType.color
+                                }]);
+                        });
+                        self.operationalGridData = self.operationalGridData.concat(operationalGridData);
+                        var resultDataList = [];
+                        var tempValue = 0;
+                        self.organizations.orgs.forEach(function (org) {
+                            if (!resultDataList) {
+                                if (org.orgTypeId == orgType.id) {
+                                    tempValue += 1;
+                                    resultDataList = [{ name: new Date(org.createdDate), value: tempValue }];
+                                }
+                                else {
+                                    tempValue = 0;
+                                    resultDataList = [{ name: new Date(org.createdDate), value: tempValue }];
+                                }
+                            }
+                            else {
+                                if (self.isInOrgDataList(resultDataList, new Date(org.createdDate)) && org.orgTypeId == orgType.id) {
+                                    tempValue += 1;
+                                    resultDataList[resultDataList.length - 1]['value'] = tempValue;
+                                }
+                                else if (!self.isInOrgDataList(resultDataList, new Date(org.createdDate)) && org.orgTypeId == orgType.id) {
+                                    tempValue += 1;
+                                    resultDataList = resultDataList.concat({ name: new Date(org.createdDate), value: tempValue });
+                                }
+                                else if (org.orgTypeId != orgType.id) {
+                                    resultDataList = resultDataList.concat([{ name: new Date(org.createdDate), value: tempValue }]);
+                                }
+                            }
+                        });
+                        var operationalResultDataList = [];
+                        var operationalTempValue = 0;
+                        self.organizations.orgs.filter(function (e) { return e.operational; }).forEach(function (org) {
+                            if (!operationalResultDataList) {
+                                if (org.orgTypeId == orgType.id) {
+                                    operationalTempValue += 1;
+                                    operationalResultDataList = [{ name: new Date(org.createdDate), value: operationalTempValue }];
+                                }
+                                else {
+                                    operationalTempValue = 0;
+                                    operationalResultDataList = [{ name: new Date(org.createdDate), value: operationalTempValue }];
+                                }
+                            }
+                            else {
+                                if (self.isInOrgDataList(operationalResultDataList, new Date(org.createdDate)) && org.orgTypeId == orgType.id) {
+                                    operationalTempValue += 1;
+                                    operationalResultDataList[operationalResultDataList.length - 1]['value'] = operationalTempValue;
+                                }
+                                else if (!self.isInOrgDataList(operationalResultDataList, new Date(org.createdDate)) && org.orgTypeId == orgType.id) {
+                                    operationalTempValue += 1;
+                                    operationalResultDataList = operationalResultDataList.concat({ name: new Date(org.createdDate), value: operationalTempValue });
+                                }
+                                else if (org.orgTypeId != orgType.id) {
+                                    operationalResultDataList = operationalResultDataList.concat([{ name: new Date(org.createdDate), value: operationalTempValue }]);
+                                }
+                            }
+                        });
+                        var filterResultforPie = filterResult.length;
+                        var operationalFilterResultforPie = operationalFilterResult.length;
+                        var filterResultObj = { name: orgType.name, orgs: filterResult };
+                        var operationalFilterResultObj = { name: orgType.name, orgs: operationalFilterResult };
+                        var filterResultforPieGraphObj = { name: orgType.name, value: filterResultforPie };
+                        var listFilterObj = { name: orgType.name, value: filterResultforPie, isShow: true, color: orgType.color };
+                        var operationalFilterResultforPieGraphObj = { name: orgType.name, value: operationalFilterResultforPie };
+                        var operationalListFilterObj = { name: orgType.name, value: operationalFilterResultforPie, isShow: true, color: orgType.color };
+                        self.allGraphData = self.allGraphData.concat(filterResultObj);
+                        self.operationalGraphData = self.operationalGraphData.concat(operationalFilterResultObj);
+                        self.allPieGraphData = self.allPieGraphData.concat(filterResultforPieGraphObj);
+                        self.operationalPieGraphData = self.operationalPieGraphData.concat(operationalFilterResultforPieGraphObj);
+                        self.allStackGraphData = self.allStackGraphData.concat({ name: orgType.name, series: resultDataList });
+                        self.operationalStackGraphData = self.operationalStackGraphData.concat({ name: orgType.name, series: operationalResultDataList });
+                        self.allListFilterData = self.allListFilterData.concat(listFilterObj);
+                        self.operationalListFilterData = self.operationalListFilterData.concat(operationalListFilterObj);
                     });
-                    self.allGridData = tempAllGridData;
-                    //add latestRiskStatOrg data into OperationalGridData
-                    var tempOperationalGridData = [];
-                    self.operationalGridData.forEach(function (org) {
-                        if (s.has(org.legacyId)) {
-                            var index = latestRiskStatOrg.map(function (riskOrg) { return riskOrg.orgID; }).indexOf(org.legacyId);
-                            tempOperationalGridData.push(Object.assign({}, org, latestRiskStatOrg[index]));
-                        }
-                        else {
-                            tempOperationalGridData.push(Object.assign({}, org));
-                        }
+                    self.organizationService.getRiskStatOrg().subscribe(function (data) {
+                        //sort riskStatOrg
+                        data.riskStatOrg.sort(function (a, b) { return a.date < b.date; });
+                        //get all latestRiskStatOrg
+                        var s = new Set();
+                        var latestRiskStatOrg = [];
+                        data.riskStatOrg.forEach(function (org) {
+                            if (!s.has(org.orgID)) {
+                                s.add(org.orgID);
+                                latestRiskStatOrg.push(Object.assign({}, org));
+                            }
+                        });
+                        console.log(latestRiskStatOrg);
+                        //add latestRiskStatOrg data into AllGridData
+                        var tempAllGridData = [];
+                        self.allGridData.forEach(function (org) {
+                            if (s.has(org.legacyId)) {
+                                var index = latestRiskStatOrg.map(function (riskOrg) { return riskOrg.orgID; }).indexOf(org.legacyId);
+                                tempAllGridData.push(Object.assign({}, org, latestRiskStatOrg[index]));
+                            }
+                            /*else{
+                              tempAllGridData.push(Object.assign({}, org));
+                            }*/
+                        });
+                        //add latestRiskStatOrg data into OperationalGridData
+                        var tempOperationalGridData = [];
+                        self.operationalGridData.forEach(function (org) {
+                            if (s.has(org.legacyId)) {
+                                var index = latestRiskStatOrg.map(function (riskOrg) { return riskOrg.orgID; }).indexOf(org.legacyId);
+                                tempOperationalGridData.push(Object.assign({}, org, latestRiskStatOrg[index]));
+                            }
+                            /*else{
+                              tempOperationalGridData.push(Object.assign({}, org));
+                            }*/
+                        });
+                        self.allGridData = tempAllGridData;
+                        self.operationalGridData = tempOperationalGridData;
+                        self.pieGraphData = self.allPieGraphData;
+                        self.stackGraphData = self.allStackGraphData;
+                        self.colorScheme.domain = customeColor;
+                        self.allColorScheme.domain = customeColor;
+                        self.gridData = self.allGridData;
+                        self.listFilterData = self.allListFilterData;
+                        self.dataReady = true;
                     });
-                    self.operationalGridData = tempOperationalGridData;
-                    self.pieGraphData = self.allPieGraphData;
-                    self.stackGraphData = self.allStackGraphData;
-                    self.colorScheme.domain = customeColor;
-                    self.allColorScheme.domain = customeColor;
-                    self.gridData = self.allGridData;
-                    self.listFilterData = self.allListFilterData;
-                    self.dataReady = true;
                 });
             });
         });
@@ -1100,6 +1122,33 @@ var OrgInsightsComponent = /** @class */ (function () {
     OrgInsightsComponent.prototype.ngAfterViewInit = function () {
         setTimeout(function (_) {
             window.dispatchEvent(new Event('resize'));
+        });
+    };
+    OrgInsightsComponent.prototype.checkData = function (sdata) {
+        var self = this;
+        self.organizationService.getRiskStatOrg().subscribe(function (data) {
+            //sort riskStatOrg
+            data.riskStatOrg.sort(function (a, b) { return a.date < b.date; });
+            //get all latestRiskStatOrg
+            var s = new Set();
+            var latestRiskStatOrg = [];
+            data.riskStatOrg.forEach(function (org) {
+                if (!s.has(org.orgID)) {
+                    s.add(org.orgID);
+                }
+            });
+            console.log(s);
+            var tempData = [];
+            sdata.orgs.forEach(function (org) {
+                if (s.has(org.legacyId)) {
+                    tempData.push(Object.assign({}, org));
+                }
+                /*else{
+                  tempOperationalGridData.push(Object.assign({}, org));
+                }*/
+            });
+            console.log(tempData);
+            return { orgs: tempData };
         });
     };
     OrgInsightsComponent = __decorate([
