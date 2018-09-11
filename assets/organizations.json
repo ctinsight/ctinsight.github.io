@@ -1,0 +1,77 @@
+{
+    "organizations":
+    [
+        {
+            "id": "ORG-UUID1",
+            "name": "Test Org 1",
+            "legacyId": "legacyId1",
+            "orgType": "ORGTYPE-UUID1",
+            "createdDate": "2012-04-23T18:25:43.511Z",
+            "opened": "2012-04-23T18:25:43.511Z",
+            "closed": "2012-04-23T18:25:43.511Z"
+        }, 
+        {
+            "id": "ORG-UUID2",
+            "name": "Test Org 2",
+            "legacyId": "legacyId2",
+            "orgType": "ORGTYPE-UUID1",
+            "createdDate": "2012-04-23T18:25:43.511Z",
+            "opened": "2012-04-23T18:25:43.511Z",
+            "closed": "2012-04-23T18:25:43.511Z"
+        }, 
+        {
+            "id": "ORG-UUID3",
+            "name": "Test Org 3",
+            "legacyId": "legacyId3",
+            "orgType": "ORGTYPE-UUID2",
+            "createdDate": "2012-04-23T18:25:43.511Z",
+            "opened": "2012-04-23T18:25:43.511Z",
+            "closed": "2012-04-23T18:25:43.511Z"
+        }, 
+        {
+            "id": "ORG-UUID4",
+            "name": "Test Org 4",
+            "legacyId": "legacyId4",
+            "orgType": "ORGTYPE-UUID2",
+            "createdDate": "2012-04-23T18:25:43.511Z",
+            "opened": "2012-04-23T18:25:43.511Z",
+            "closed": "2012-04-23T18:25:43.511Z"
+        },
+        {
+            "id": "ORG-UUID1",
+            "name": "Test Org 5",
+            "legacyId": "legacyId5",
+            "orgType": "ORGTYPE-UUID3",
+            "createdDate": "2012-04-23T18:25:43.511Z",
+            "opened": "2012-04-23T18:25:43.511Z",
+            "closed": "2012-04-23T18:25:43.511Z"
+        }, 
+        {
+            "id": "ORG-UUID2",
+            "name": "Test Org 6",
+            "legacyId": "legacyId6",
+            "orgType": "ORGTYPE-UUID3",
+            "createdDate": "2012-04-23T18:25:43.511Z",
+            "opened": "2012-04-23T18:25:43.511Z",
+            "closed": "2012-04-23T18:25:43.511Z"
+        }, 
+        {
+            "id": "ORG-UUID3",
+            "name": "Test Org 7",
+            "legacyId": "legacyId7",
+            "orgType": "ORGTYPE-UUID4",
+            "createdDate": "2012-04-23T18:25:43.511Z",
+            "opened": "2012-04-23T18:25:43.511Z",
+            "closed": "2012-04-23T18:25:43.511Z"
+        }, 
+        {
+            "id": "ORG-UUID4",
+            "name": "Test Org 8",
+            "legacyId": "legacyId8",
+            "orgType": "ORGTYPE-UUID4",
+            "createdDate": "2012-04-23T18:25:43.511Z",
+            "opened": "2012-04-23T18:25:43.511Z",
+            "closed": "2012-04-23T18:25:43.511Z"
+        }
+    ]
+}
