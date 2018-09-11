@@ -1,0 +1,74 @@
+{
+  "orgTypes": [
+    {
+      "id": "9d1fe084-f89f-4ce3-bcff-c168d7acdc10",
+      "name": "HYIP",
+      "color": "#800000"
+    },
+    {
+      "id": "a8897b1f-022b-4dd3-aa6d-f5204b86912b",
+      "name": "Exchange",
+      "color": "#e6194B"
+    },
+    {
+      "id": "68c88fa7-6c92-4177-abcd-c024e8bb388e",
+      "name": "Holding Company",
+      "color": "#9A6324"
+    },
+    {
+      "id": "6af570c0-494a-415b-8cf6-d91180d02c93",
+      "name": "ATM",
+      "color": "#f58231"
+    },
+    {
+      "id": "be328f87-ad25-44e6-b84a-bbee2d3fc30a",
+      "name": "Miner",
+      "color": "#808000"
+    },
+    {
+      "id": "242768cf-307a-4328-a5db-12f3d4a38db7",
+      "name": "Gambling",
+      "color": "#ffe119"
+    },
+    {
+      "id": "886f15b8-b9f1-449d-bdb7-b79da333e439",
+      "name": "Dark Market",
+      "color": "#bcf60c"
+    },
+    {
+      "id": "8385a156-093a-4f6e-8620-1e53520a1635",
+      "name": "Service",
+      "color": "#3cb44b"
+    },
+    {
+      "id": "f6e5269f-c0be-43f7-b982-efd8c2add085",
+      "name": "Mixer",
+      "color": "#aaffc3"
+    },
+    {
+      "id": "03f4f3cc-ba6c-4986-b125-d591ee2890f7",
+      "name": "Wallet",
+      "color": "#008080"
+    },
+    {
+      "id": "70e2ae46-f50c-49ee-b59d-ecc21f2ffa46",
+      "name": "Decentralized Exchange",
+      "color": "#46f0f0"
+    },
+    {
+      "id": "bcd2f8cd-e72e-4044-9a41-e5e7fc5a23fd",
+      "name": "Coin Swap",
+      "color": "#000075"
+    },
+    {
+      "id": "b94ffcf3-5ee1-48ad-b600-9bd6000ccb93",
+      "name": "Dark Vendor",
+      "color": "#4363d8"
+    },
+    {
+      "id": "a9023d4a-d369-4ca1-82a8-a85026ea5669",
+      "name": "Other",
+      "color": "#911eb4"
+    }
+  ]
+}

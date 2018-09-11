@@ -1,0 +1,25 @@
+{
+    "OrgTypes":
+    [
+        {
+            "id": "ORGTYPE-UUID1",
+            "name": "Exchange",
+            "threatLevel": 0
+        }, 
+        {
+            "id": "ORGTYPE-UUID2",
+            "name": "Mixer",
+            "threatLevel": 4
+        }, 
+        {
+            "id": "ORGTYPE-UUID3",
+            "name": "Dark Market",
+            "threatLevel": 8
+        }, 
+        {
+            "id": "ORGTYPE-UUID4",
+            "name": "Dark Vendor",
+            "threatLevel": 9
+        }
+    ]
+}
