@@ -614,7 +614,7 @@ var HeaderComponent = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div>\n  <ngx-datatable\n    #mydatatable\n    class=\"org-insights-datatable\"\n    [headerHeight]=\"50\"\n    [limit]=\"5\"\n    [columnMode]=\"'force'\"\n    [rowHeight]=\"50\"\n    [rows]=\"gridData\"\n    [scrollbarV]=\"true\"\n    (page)=\"onPage($event)\">\n    <ngx-datatable-column name=\"NAME\">\n      <ng-template ngx-datatable-cell-template let-rowIndex=\"rowIndex\" let-value=\"value\" let-row=\"row\">\n        <a routerLink=\"/organization/{{row.legacyId}}\">\n          {{row.name}}\n        </a>\n      </ng-template>\n    </ngx-datatable-column>\n    <ngx-datatable-column name=\"TYPE\">\n      <ng-template ngx-datatable-cell-template let-rowIndex=\"rowIndex\" let-row=\"row\" let-value=\"value\">\n        <span [style.color]=\"row.color\">\n          {{row.orgType}}\n        </span>\n      </ng-template>\n    </ngx-datatable-column>\n    <ngx-datatable-column name=\"OPERATIONAL\">\n      <ng-template ngx-datatable-cell-template let-rowIndex=\"rowIndex\" let-row=\"row\" let-value=\"value\">\n        <span *ngIf=\"row.operational\">Y</span>\n        <span *ngIf=\"!row.operational\">N</span>\n      </ng-template>\n    </ngx-datatable-column>\n    <ngx-datatable-column name=\"DISCOVERED\">\n      <ng-template ngx-datatable-cell-template let-rowIndex=\"rowIndex\" let-row=\"row\" let-value=\"value\">\n        {{row.createdDate}}\n      </ng-template>\n    </ngx-datatable-column>\n    <ngx-datatable-column name=\"RISKY INTERACTIONS\">\n      <ng-template ngx-datatable-cell-template let-rowIndex=\"rowIndex\" let-row=\"row\" let-value=\"value\">\n        <span *ngIf=\"row.knownSuspiciousInteractionsCount && row.knownInteractionCounts\">{{getResult(row.knownSuspiciousInteractionsCount2, row.knownInteractionCounts2) | number:'1.1-5'}}%</span>\n        <span *ngIf=\"!row.knownSuspiciousInteractionsCount || !row.knownInteractionCounts\">unknown</span>\n      </ng-template>\n    </ngx-datatable-column>\n    <ngx-datatable-column name=\"RISK SCORE\">\n      <ng-template ngx-datatable-cell-template let-rowIndex=\"rowIndex\" let-row=\"row\" let-value=\"value\">\n        <span *ngIf=\"row.score\">{{row.score  | number:'1.2-2'}}</span>\n        <span *ngIf=\"!row.score\">unknown</span>\n      </ng-template>\n    </ngx-datatable-column>\n    <!--ngx-datatable-footer>\n      <ng-template\n        ngx-datatable-footer-template\n        let-rowCount=\"rowCount\"\n        let-pageSize=\"pageSize\"\n        let-selectedCount=\"selectedCount\",\n        let-curPage=\"curPage\"\n        let-offset=\"offset\">\n        <div style=\"padding: 5px 10px\">\n          <div>\n            Rows: {{rowCount}} |\n            Size: {{pageSize}} |\n            Current: {{curPage}} |\n            Offset: {{offset}}\n          </div>\n        </div>\n        <datatable-pager\n          [pagerLeftArrowIcon]=\"'datatable-icon-left'\"\n          [pagerRightArrowIcon]=\"'datatable-icon-right'\"\n          [pagerPreviousIcon]=\"'datatable-icon-prev'\"\n          [pagerNextIcon]=\"'datatable-icon-skip'\"\n          [page]=\"curPage\"\n          [size]=\"pageSize\"\n          [count]=\"rowCount\"\n          [hidden]=\"!((rowCount / pageSize) > 1)\"\n          (change)=\"mydatatable.onFooterPage($event)\">\n        </datatable-pager>\n      </ng-template>\n    </ngx-datatable-footer-->\n  </ngx-datatable>\n</div>"
+module.exports = "<div>\n  <ngx-datatable\n    #mydatatable\n    class=\"org-insights-datatable\"\n    [headerHeight]=\"50\"\n    [limit]=\"5\"\n    [columnMode]=\"'force'\"\n    [rowHeight]=\"50\"\n    [rows]=\"gridData\"\n    [scrollbarV]=\"true\"\n    (page)=\"onPage($event)\">\n    <ngx-datatable-column name=\"NAME\">\n      <ng-template ngx-datatable-cell-template let-rowIndex=\"rowIndex\" let-value=\"value\" let-row=\"row\">\n        <a routerLink=\"/organization/{{row.legacyId}}\">\n          {{row.name}}\n        </a>\n      </ng-template>\n    </ngx-datatable-column>\n    <ngx-datatable-column name=\"TYPE\">\n      <ng-template ngx-datatable-cell-template let-rowIndex=\"rowIndex\" let-row=\"row\" let-value=\"value\">\n        <span [style.color]=\"row.color\">\n          {{row.orgType}}\n        </span>\n      </ng-template>\n    </ngx-datatable-column>\n    <ngx-datatable-column name=\"OPERATIONAL\">\n      <ng-template ngx-datatable-cell-template let-rowIndex=\"rowIndex\" let-row=\"row\" let-value=\"value\">\n        <span *ngIf=\"row.operational\">Y</span>\n        <span *ngIf=\"!row.operational\">N</span>\n      </ng-template>\n    </ngx-datatable-column>\n    <ngx-datatable-column name=\"DISCOVERED\">\n      <ng-template ngx-datatable-cell-template let-rowIndex=\"rowIndex\" let-row=\"row\" let-value=\"value\">\n        {{row.createdDate | date:shortDate }}\n      </ng-template>\n    </ngx-datatable-column>\n    <ngx-datatable-column name=\"RISKY PAYMENTS\">\n      <ng-template ngx-datatable-cell-template let-rowIndex=\"rowIndex\" let-row=\"row\" let-value=\"value\">\n        <span *ngIf=\"row.knownSuspiciousInteractionsCount && row.knownInteractionCounts\">{{getResult(row.knownSuspiciousInteractionsCount, row.knownInteractionCounts) | number:'1.1-5'}}%</span>\n        <span *ngIf=\"!row.knownSuspiciousInteractionsCount || !row.knownInteractionCounts\">unknown</span>\n      </ng-template>\n    </ngx-datatable-column>\n    <!-- <ngx-datatable-column name=\"RISK SCORE\">\n      <ng-template ngx-datatable-cell-template let-rowIndex=\"rowIndex\" let-row=\"row\" let-value=\"value\">\n        <span *ngIf=\"row.score\">{{row.score  | number:'1.2-2'}}</span>\n        <span *ngIf=\"!row.score\">unknown</span>\n      </ng-template>\n    </ngx-datatable-column> -->\n    <!--ngx-datatable-footer>\n      <ng-template\n        ngx-datatable-footer-template\n        let-rowCount=\"rowCount\"\n        let-pageSize=\"pageSize\"\n        let-selectedCount=\"selectedCount\",\n        let-curPage=\"curPage\"\n        let-offset=\"offset\">\n        <div style=\"padding: 5px 10px\">\n          <div>\n            Rows: {{rowCount}} |\n            Size: {{pageSize}} |\n            Current: {{curPage}} |\n            Offset: {{offset}}\n          </div>\n        </div>\n        <datatable-pager\n          [pagerLeftArrowIcon]=\"'datatable-icon-left'\"\n          [pagerRightArrowIcon]=\"'datatable-icon-right'\"\n          [pagerPreviousIcon]=\"'datatable-icon-prev'\"\n          [pagerNextIcon]=\"'datatable-icon-skip'\"\n          [page]=\"curPage\"\n          [size]=\"pageSize\"\n          [count]=\"rowCount\"\n          [hidden]=\"!((rowCount / pageSize) > 1)\"\n          (change)=\"mydatatable.onFooterPage($event)\">\n        </datatable-pager>\n      </ng-template>\n    </ngx-datatable-footer-->\n  </ngx-datatable>\n</div>\n"
 
 /***/ }),
 
@@ -708,7 +708,7 @@ module.exports = ".example-icon {\n  padding: 0 14px;\n}\n\n.example-spacer {\n 
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<mat-toolbar style=\"background-color:#5B8ED0; color: #fff\">\n  <mat-toolbar-row>\n    <span>ORGANIZATION INSIGHTS</span>\n    <span class=\"example-spacer\"></span>\n    <img src=\"../../../assets/Export_Icon2x.png\" alt=\"export icon\" height=\"30px\">\n  </mat-toolbar-row>\n</mat-toolbar>\n<div>\n  <ul class=\"filter-ul\">\n    <li class=\"filter-li\"><a (click)=\"filter('all')\" [ngClass]=\"{'active': selectedFilter == 'all'}\">ALL</a></li>\n    <li class=\"filter-li\"><a (click)=\"filter('operational')\" [ngClass]=\"{'active': selectedFilter == 'operational'}\">OPERATIONAL</a></li>\n    <!--li class=\"filter-li\"><a (click)=\"filter('new')\" [ngClass]=\"{'active': selectedFilter == 'new'}\">NEW</a></li>\n    <li class=\"filter-li\"><a (click)=\"filter('discovered')\" [ngClass]=\"{'active': selectedFilter == 'discovered'}\">DISCOVERED</a></li-->\n  </ul>\n</div>\n<mat-card class=\"example-card\">\n  <div class=\"row\" style=\"margin: 0; min-height:300px\">\n    <div *ngIf=\"pieGraphData\" class=\"col-2\">\n      <ul class=\"legend-list\">\n        <li [style.background-color]=\"listFilterDataSet.color\" [ngClass]=\"{'filter-out': !listFilterDataSet.isShow}\" *ngFor=\"let listFilterDataSet of listFilterData; let i = index\" (click)=\"resetFilterList(listFilterDataSet.name)\">\n          <span>{{listFilterDataSet.name}}</span>\n          <span style=\"float:right\">{{listFilterDataSet.value | number:'1.0-5'}}</span>\n        </li>\n        <li style=\"cursor: auto;\">\n          <button class=\"type-selector\" [disabled]=\"!isFilterOn()\" [ngClass]=\"{'disabled': !isFilterOn()}\" (click)=\"filterNone()\"><i class=\"material-icons type-selector-icon\">check</i><span>ALL</span></button>\n          <button class=\"type-selector\" [disabled]=\"isFilterOn()\" [ngClass]=\"{'disabled': isFilterOn()}\" (click)=\"filterAll()\"><i class=\"material-icons type-selector-icon\">close</i><span>ALL</span></button>\n          <span class=\"total-label\" style=\"float:right; font-size:12px; padding-top: 12px; color: gray\">TOTAL {{totalOrgs | number:'1.0-5'}}</span>\n        </li>\n      </ul>\n    </div>\n    <div class=\"col-7\" style=\"max-height: 400px\">\n      <p class=\"graph-title\">ORGANIZATIONS</p>\n      <ngx-charts-area-chart-stacked\n        [scheme]=\"colorScheme\"\n        [results]=\"stackGraphData\"\n        legendTitle=\"Legend\"\n        animations=\"'false'\"\n        gradient=\"true\"\n        xAxis=\"true\"\n        yAxis=\"true\"\n        autoScale=\"true\"\n        showGridLines=\"false\"\n        roundDomains=\"true\"\n        [curve]=\"curve\">\n      </ngx-charts-area-chart-stacked>\n    </div>\n    <div class=\"col-3\" style=\"max-height: 250px;\">\n      <div style=\"text-align: center;\"><p style=\"margin-top:80px\" class=\"graph-date\">{{thisDate}}</p></div>\n      <ngx-charts-pie-chart\n        [scheme]=\"colorScheme\"\n        [results]=\"pieGraphData\"\n        animations=\"true\"\n        explodeSlices=\"true\"\n        doughnut=\"true\"\n        arcWidth=\"0.5\"\n        gradient=\"false\"\n        (dblclick)=\"dblclick($event)\"\n        (select)=\"select($event)\">\n      </ngx-charts-pie-chart>\n    </div>\n  </div>\n</mat-card>\n<mat-card class=\"example-card\" style=\"margin-top:8px\">\n  <div *ngIf=\"dataReady\">\n    <app-org-insights-datatable [gridData]=\"gridData\"></app-org-insights-datatable>\n  </div>\n</mat-card>\n<!--div>\n  <iframe width=\"100%\" height=\"800px\" frameborder=\"0\" src=\"https://swimlane.github.io/ngx-charts/\"></iframe>\n</div-->"
+module.exports = "<mat-toolbar style=\"background-color:#5B8ED0; color: #fff\">\n  <mat-toolbar-row>\n    <span>ORGANIZATION INSIGHTS</span>\n    <span class=\"example-spacer\"></span>\n    <img src=\"../../../assets/Export_Icon2x.png\" alt=\"export icon\" height=\"30px\">\n  </mat-toolbar-row>\n</mat-toolbar>\n<div>\n  <ul class=\"filter-ul\">\n    <li class=\"filter-li\"><a (click)=\"filter('all')\" [ngClass]=\"{'active': selectedFilter == 'all'}\">ALL</a></li>\n    <li class=\"filter-li\"><a (click)=\"filter('operational')\" [ngClass]=\"{'active': selectedFilter == 'operational'}\">OPERATIONAL</a></li>\n    <!--li class=\"filter-li\"><a (click)=\"filter('new')\" [ngClass]=\"{'active': selectedFilter == 'new'}\">NEW</a></li>\n    <li class=\"filter-li\"><a (click)=\"filter('discovered')\" [ngClass]=\"{'active': selectedFilter == 'discovered'}\">DISCOVERED</a></li-->\n  </ul>\n</div>\n<mat-card class=\"example-card\">\n  <div class=\"row\" style=\"margin: 0; min-height:300px\">\n    <div *ngIf=\"pieGraphData\" class=\"col-2\">\n      <ul class=\"legend-list\">\n        <li [style.background-color]=\"listFilterDataSet.color\" [ngClass]=\"{'filter-out': !listFilterDataSet.isShow}\" *ngFor=\"let listFilterDataSet of listFilterData; let i = index\" (click)=\"resetFilterList(listFilterDataSet.name)\">\n          <span>{{listFilterDataSet.name}}</span>\n          <span style=\"float:right\">{{listFilterDataSet.value | number:'1.0-5'}}</span>\n        </li>\n        <li style=\"cursor: auto;\">\n          <button class=\"type-selector\" [disabled]=\"!isFilterOn()\" [ngClass]=\"{'disabled': !isFilterOn()}\" (click)=\"filterNone()\"><i class=\"material-icons type-selector-icon\">check</i><span>ALL</span></button>\n          <button class=\"type-selector\" [disabled]=\"isFilterOn()\" [ngClass]=\"{'disabled': isFilterOn()}\" (click)=\"filterAll()\"><i class=\"material-icons type-selector-icon\">close</i><span>ALL</span></button>\n          <span class=\"total-label\" style=\"float:right; font-size:12px; padding-top: 12px; color: gray\">TOTAL {{totalOrgs | number:'1.0-5'}}</span>\n        </li>\n      </ul>\n    </div>\n    <div class=\"col-7\" style=\"max-height: 400px; width: 400px\">\n      <p class=\"graph-title\">ORGANIZATIONS</p>\n      <ngx-charts-area-chart-stacked\n      [scheme]=\"colorScheme\"\n      [results]=\"stackGraphData\"\n      animations=\"'true'\"\n      gradient=\"true\"\n      xAxis=\"true\"\n      yAxis=\"true\"\n      autoScale=\"true\"\n      showGridLines=\"false\"\n      roundDomains=\"true\"\n      >\n    </ngx-charts-area-chart-stacked>\n    </div>\n    <div class=\"col-3\" style=\"max-height: 250px;\">\n      <div style=\"text-align: center;\"><p style=\"margin-top:80px\" class=\"graph-date\">{{thisDate}}</p></div>\n      <ngx-charts-pie-chart\n        [scheme]=\"colorScheme\"\n        [results]=\"pieGraphData\"\n        animations=\"true\"\n        explodeSlices=\"true\"\n        doughnut=\"true\"\n        arcWidth=\"0.5\"\n        gradient=\"false\"\n        (dblclick)=\"dblclick($event)\"\n        (select)=\"select($event)\">\n      </ngx-charts-pie-chart>\n    </div>\n  </div>\n</mat-card>\n<mat-card class=\"example-card\" style=\"margin-top:8px\">\n  <div *ngIf=\"dataReady\">\n    <app-org-insights-datatable [gridData]=\"gridData\"></app-org-insights-datatable>\n  </div>\n</mat-card>\n<!--div>\n  <iframe width=\"100%\" height=\"800px\" frameborder=\"0\" src=\"https://swimlane.github.io/ngx-charts/\"></iframe>\n\n\n[scheme]=\"colorScheme\"\n        [results]=\"stackGraphData\"\n        legendTitle=\"Legend\"\n        gradient=\"true\"\n        xAxis=\"true\"\n        yAxis=\"true\"\n        autoScale=\"false\"\n        showGridLines=\"false\"\n        roundDomains=\"true\"\n        [curve]=\"curve\">\n\n</div-->\n\n"
 
 /***/ }),
 
@@ -743,33 +743,6 @@ var __metadata = (undefined && undefined.__metadata) || function (k, v) {
 var OrgInsightsComponent = /** @class */ (function () {
     function OrgInsightsComponent(organizationService) {
         this.organizationService = organizationService;
-        this.dateData = [
-            {
-                "name": "Exchange",
-                "series": [
-                    {
-                        "name": 2010,
-                        "value": 0
-                    },
-                    {
-                        "name": 2011,
-                        "value": 10
-                    },
-                    {
-                        "name": 2012,
-                        "value": 20
-                    },
-                    {
-                        "name": 2013,
-                        "value": 25
-                    },
-                    {
-                        "name": 2014,
-                        "value": 35
-                    }
-                ]
-            },
-        ];
         this.allStackGraphData = [];
         this.operationalStackGraphData = [];
         this.stackGraphData = [];
@@ -800,7 +773,7 @@ var OrgInsightsComponent = /** @class */ (function () {
         self.organizationService.getOrgTypes().subscribe(function (data) {
             self.orgTypes = data;
             self.organizationService.getOrgnizations().subscribe(function (data) {
-                data.orgs.sort(function (a, b) { return new Date(a.createdDate).getTime() - new Date(b.createdDate).getTime(); });
+                data.orgs.sort(function (a, b) { return new Date(Number(a.createdDate)).getTime() - new Date(Number(b.createdDate)).getTime(); });
                 self.organizations = data;
                 self.organizationService.getRiskStatOrg().subscribe(function (data) {
                     //sort riskStatOrg
@@ -869,54 +842,56 @@ var OrgInsightsComponent = /** @class */ (function () {
                         var resultDataList = [];
                         var tempValue = 0;
                         self.organizations.orgs.forEach(function (org) {
+                            var orgDate = new Date(Number(org.createdDate));
                             if (!resultDataList) {
-                                if (org.orgTypeId == orgType.id) {
+                                if (org.orgTypeId === orgType.id) {
                                     tempValue += 1;
-                                    resultDataList = [{ name: new Date(org.createdDate), value: tempValue }];
+                                    resultDataList = [{ name: orgDate, value: tempValue }];
                                 }
                                 else {
                                     tempValue = 0;
-                                    resultDataList = [{ name: new Date(org.createdDate), value: tempValue }];
+                                    resultDataList = [{ name: orgDate, value: tempValue }];
                                 }
                             }
                             else {
-                                if (self.isInOrgDataList(resultDataList, new Date(org.createdDate)) && org.orgTypeId == orgType.id) {
+                                if (self.isInOrgDataList(resultDataList, orgDate) && org.orgTypeId == orgType.id) {
                                     tempValue += 1;
                                     resultDataList[resultDataList.length - 1]['value'] = tempValue;
                                 }
-                                else if (!self.isInOrgDataList(resultDataList, new Date(org.createdDate)) && org.orgTypeId == orgType.id) {
+                                else if (!self.isInOrgDataList(resultDataList, orgDate) && org.orgTypeId == orgType.id) {
                                     tempValue += 1;
-                                    resultDataList = resultDataList.concat({ name: new Date(org.createdDate), value: tempValue });
+                                    resultDataList = resultDataList.concat({ name: orgDate, value: tempValue });
                                 }
                                 else if (org.orgTypeId != orgType.id) {
-                                    resultDataList = resultDataList.concat([{ name: new Date(org.createdDate), value: tempValue }]);
+                                    resultDataList = resultDataList.concat([{ name: orgDate, value: tempValue }]);
                                 }
                             }
                         });
                         var operationalResultDataList = [];
                         var operationalTempValue = 0;
                         self.organizations.orgs.filter(function (e) { return e.operational; }).forEach(function (org) {
+                            var orgDate = new Date(Number(org.createdDate));
                             if (!operationalResultDataList) {
                                 if (org.orgTypeId == orgType.id) {
                                     operationalTempValue += 1;
-                                    operationalResultDataList = [{ name: new Date(org.createdDate), value: operationalTempValue }];
+                                    operationalResultDataList = [{ name: orgDate, value: operationalTempValue }];
                                 }
                                 else {
                                     operationalTempValue = 0;
-                                    operationalResultDataList = [{ name: new Date(org.createdDate), value: operationalTempValue }];
+                                    operationalResultDataList = [{ name: orgDate, value: operationalTempValue }];
                                 }
                             }
                             else {
-                                if (self.isInOrgDataList(operationalResultDataList, new Date(org.createdDate)) && org.orgTypeId == orgType.id) {
+                                if (self.isInOrgDataList(operationalResultDataList, orgDate) && org.orgTypeId == orgType.id) {
                                     operationalTempValue += 1;
                                     operationalResultDataList[operationalResultDataList.length - 1]['value'] = operationalTempValue;
                                 }
-                                else if (!self.isInOrgDataList(operationalResultDataList, new Date(org.createdDate)) && org.orgTypeId == orgType.id) {
+                                else if (!self.isInOrgDataList(operationalResultDataList, orgDate) && org.orgTypeId == orgType.id) {
                                     operationalTempValue += 1;
-                                    operationalResultDataList = operationalResultDataList.concat({ name: new Date(org.createdDate), value: operationalTempValue });
+                                    operationalResultDataList = operationalResultDataList.concat({ name: orgDate, value: operationalTempValue });
                                 }
                                 else if (org.orgTypeId != orgType.id) {
-                                    operationalResultDataList = operationalResultDataList.concat([{ name: new Date(org.createdDate), value: operationalTempValue }]);
+                                    operationalResultDataList = operationalResultDataList.concat([{ name: orgDate, value: operationalTempValue }]);
                                 }
                             }
                         });
@@ -1169,7 +1144,7 @@ var OrgInsightsComponent = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div>\n  <ngx-datatable\n    #mydatatable\n    class=\"org-insights-datatable\"\n    [headerHeight]=\"50\"\n    [limit]=\"5\"\n    [columnMode]=\"'force'\"\n    [rowHeight]=\"50\"\n    [rows]=\"gridData\"\n    [scrollbarV]=\"true\"\n    (page)=\"onPage($event)\">\n    <ngx-datatable-column name=\"NAME\">\n      <ng-template ngx-datatable-cell-template let-rowIndex=\"rowIndex\" let-value=\"value\" let-row=\"row\">\n        <span>\n          {{row.name}}\n        </span>\n      </ng-template>\n    </ngx-datatable-column>\n    <ngx-datatable-column name=\"TYPE\">\n      <ng-template ngx-datatable-cell-template let-rowIndex=\"rowIndex\" let-row=\"row\" let-value=\"value\">\n        <span [style.color]=\"row.color\">\n          {{row.orgType}}\n        </span>\n      </ng-template>\n    </ngx-datatable-column>\n    <ngx-datatable-column name=\"INTERACTION ADDRESSES\">\n      <ng-template ngx-datatable-cell-template let-rowIndex=\"rowIndex\" let-row=\"row\" let-value=\"value\">\n        Coming Soon\n      </ng-template>\n    </ngx-datatable-column>\n    <ngx-datatable-column name=\"INTERACTION VALUE\">\n      <ng-template ngx-datatable-cell-template let-rowIndex=\"rowIndex\" let-row=\"row\" let-value=\"value\">\n        Coming Soon\n      </ng-template>\n    </ngx-datatable-column>\n    <ngx-datatable-column name=\"INTERACTIONS\">\n      <ng-template ngx-datatable-cell-template let-rowIndex=\"rowIndex\" let-row=\"row\" let-value=\"value\">\n        {{row.knownInteractionCount | number:'1.0-5'}}\n      </ng-template>\n    </ngx-datatable-column>\n  </ngx-datatable>\n</div>"
+module.exports = "<div>\n  <ngx-datatable\n    #mydatatable\n    class=\"org-insights-datatable\"\n    [headerHeight]=\"50\"\n    [limit]=\"5\"\n    [columnMode]=\"'force'\"\n    [rowHeight]=\"50\"\n    [rows]=\"gridData\"\n    [scrollbarV]=\"true\"\n    [sorts]=\"[{prop: 'knownInteractionCount', dir: 'desc'}]\">\n    (page)=\"onPage($event)\">\n    <ngx-datatable-column name=\"NAME\">\n      <ng-template ngx-datatable-cell-template let-rowIndex=\"rowIndex\" let-value=\"value\" let-row=\"row\">\n        <span>\n          {{row.name}}\n        </span>\n      </ng-template>\n    </ngx-datatable-column>\n    <ngx-datatable-column name=\"TYPE\">\n      <ng-template ngx-datatable-cell-template let-rowIndex=\"rowIndex\" let-row=\"row\" let-value=\"value\">\n        <span [style.color]=\"row.color\">\n          {{row.orgType}}\n        </span>\n      </ng-template>\n    </ngx-datatable-column>\n    <ngx-datatable-column name=\"PAYMENT ADDRESSES\">\n      <ng-template ngx-datatable-cell-template let-rowIndex=\"rowIndex\" let-row=\"row\" let-value=\"value\">\n        Coming Soon\n      </ng-template>\n    </ngx-datatable-column>\n    <ngx-datatable-column name=\"PAYMENT VALUE\">\n      <ng-template ngx-datatable-cell-template let-rowIndex=\"rowIndex\" let-row=\"row\" let-value=\"value\">\n        Coming Soon\n      </ng-template>\n    </ngx-datatable-column>\n    <ngx-datatable-column name=\"PAYMENTS\">\n      <ng-template ngx-datatable-cell-template let-rowIndex=\"rowIndex\" let-row=\"row\" let-value=\"value\">\n        <span>\n            {{row.knownInteractionCount | number:'1.0-5'}}\n        </span>\n      </ng-template>\n    </ngx-datatable-column>\n  </ngx-datatable>\n</div>\n"
 
 /***/ }),
 
@@ -1260,7 +1235,7 @@ module.exports = ".example-icon {\n  padding: 0 14px;\n}\n\n.example-spacer {\n 
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<mat-toolbar style=\"background-color:#5B8ED0; color: #fff\">\n  <mat-toolbar-row>\n    <i class=\"material-icons\" style=\"cursor: pointer\" (click)=\"goBake()\">keyboard_backspace</i>\n    <span style=\"padding-left:10px; font-size:14px; cursor: pointer\" (click)=\"goBake()\">ORGANIZATION</span>\n    <span class=\"example-spacer\"></span>\n    <span style=\"text-align:center\"><span style=\"font-size:20px\">INTERACTION INSIGHTS:</span><br /><span *ngIf=\"currentRiskStatOrg\" style=\"font-size:30px\">{{currentRiskStatOrg.orgID}}</span></span>\n    <span class=\"example-spacer\"></span>\n    <img src=\"../../../assets/Export_Icon2x.png\" alt=\"export icon\" height=\"30px\">\n  </mat-toolbar-row>\n</mat-toolbar>\n<div>\n  <ul class=\"filter-ul\">\n    <li class=\"filter-li\"><a (click)=\"filter('all')\" [ngClass]=\"{'active': selectedFilter == 'all'}\">ALL</a></li>\n    <li class=\"filter-li\"><a (click)=\"filter('suspicious')\" [ngClass]=\"{'active': selectedFilter == 'suspicious'}\">SUSPICIOUS</a></li>\n    <!--li class=\"filter-li\"><a (click)=\"filter('new')\" [ngClass]=\"{'active': selectedFilter == 'new'}\">NEW</a></li>\n    <li class=\"filter-li\"><a (click)=\"filter('discovered')\" [ngClass]=\"{'active': selectedFilter == 'discovered'}\">DISCOVERED</a></li-->\n  </ul>\n</div>\n<mat-card class=\"example-card\">\n  <div class=\"row\" style=\"margin: 0; min-height:300px\">\n    <div *ngIf=\"pieGraphData\" class=\"col-2\">\n      <ul class=\"legend-list\">\n        <li [style.background-color]=\"listFilterDataSet.color\" [ngClass]=\"{'filter-out': !listFilterDataSet.isShow}\" *ngFor=\"let listFilterDataSet of listFilterData; let i = index\">\n          <span>{{listFilterDataSet.name}}</span>\n          <span style=\"float:right\">{{listFilterDataSet.value | number:'1.0-5'}}</span>\n        </li>\n        <li style=\"cursor: auto;\">\n          <button style=\"visibility: hidden\" class=\"type-selector\" [disabled]=\"!isFilterOn()\" [ngClass]=\"{'disabled': !isFilterOn()}\"><i class=\"material-icons type-selector-icon\">check</i><span>ALL</span></button>\n          <button style=\"visibility: hidden\" class=\"type-selector\" [disabled]=\"isFilterOn()\" [ngClass]=\"{'disabled': isFilterOn()}\"><i class=\"material-icons type-selector-icon\">close</i><span>ALL</span></button>\n          <span class=\"total-label\" style=\"float:right; font-size:12px; padding-top: 12px; color: gray\">TOTAL {{totalInteract | number:'1.0-5'}}</span>\n        </li>\n      </ul>\n    </div>\n    <div class=\"col-7\" style=\"max-height: 400px\">\n      <p class=\"graph-title\">INTERACTIONS</p>\n      <ngx-charts-area-chart-stacked\n        [scheme]=\"colorScheme\"\n        [results]=\"stackGraphData\"\n        legendTitle=\"Legend\"\n        gradient=\"true\"\n        xAxis=\"true\"\n        yAxis=\"true\"\n        autoScale=\"true\"\n        showGridLines=\"false\"\n        roundDomains=\"true\"\n        [curve]=\"curve\">\n      </ngx-charts-area-chart-stacked>\n    </div>\n    <div class=\"col-3\" style=\"max-height: 200px;\">\n      <div style=\"text-align: center;\"><p style=\"margin-top:50px\" class=\"graph-date\">{{thisDate}}</p></div>\n      <div style=\"text-align: center;\">\n        <div style=\"width:20%; float:left; text-align: center; vertical-align:middle\">\n          <p style=\"font-size:10px; margin-top: 3rem;\">STEP ONE:</p>\n          <p style=\"font-size:10px; margin-top: 2rem;\">STEP TWO:</p>\n        </div>\n        <div style=\"width:40%; float:left; text-align: center;\">\n          <p style=\"font-size:10px; margin-top: 1rem;\">SUSPICIOUS</p>\n          <p style=\"margin:0; font-size:14px; font-weight: 600\"><span *ngIf=\"currentRiskStatOrg\" style=\"background-color: rgba(0, 0, 0, 0.05); padding:10px\">{{currentRiskStatOrg.knownSuspiciousInteractionsCount | number:'1.0-5'}}</span></p>\n          <p style=\"margin:0; font-size:14px; font-weight: 600; margin-top: 1.5rem;\"><span *ngIf=\"currentRiskStatOrg\" style=\"background-color: rgba(0, 0, 0, 0.05); padding:10px\">{{currentRiskStatOrg.knownSuspiciousInteractionsCount2 | number:'1.0-5'}}</span></p>\n        </div>\n        <div style=\"width:40%; float:left; text-align: center;\">\n          <p style=\"font-size:10px; margin-top: 1rem;\">TOTAL</p>\n          <p style=\"margin:0; font-size:14px; font-weight: 600\"><span *ngIf=\"currentRiskStatOrg\" style=\"background-color: rgba(0, 0, 0, 0.05); padding:10px\">{{currentRiskStatOrg.knownInteractionCounts | number:'1.0-5'}}</span></p>\n          <p style=\"margin:0; font-size:14px; font-weight: 600; margin-top: 1.5rem;\"><span *ngIf=\"currentRiskStatOrg\" style=\"background-color: rgba(0, 0, 0, 0.05); padding:10px\">{{currentRiskStatOrg.knownInteractionCounts2 | number:'1.0-5'}}</span></p>\n        </div>\n      </div>\n      <ngx-charts-pie-chart\n        [scheme]=\"colorScheme\"\n        [results]=\"pieGraphData\"\n        animations=\"true\"\n        explodeSlices=\"true\"\n        doughnut=\"true\"\n        arcWidth=\"0.5\"\n        gradient=\"false\"\n        (dblclick)=\"dblclick($event)\"\n        (select)=\"select($event)\">\n      </ngx-charts-pie-chart>\n    </div>\n  </div>\n</mat-card>\n<mat-card class=\"example-card\" style=\"margin-top:8px\">\n  <div *ngIf=\"dataReady\">\n    <app-organization-datatable [gridData]=\"gridData\"></app-organization-datatable>\n  </div>\n</mat-card>\n<!--div>\n  <iframe width=\"100%\" height=\"800px\" frameborder=\"0\" src=\"https://swimlane.github.io/ngx-charts/\"></iframe>\n</div-->"
+module.exports = "<mat-toolbar style=\"background-color:#5B8ED0; color: #fff\">\n  <mat-toolbar-row>\n    <i class=\"material-icons\" style=\"cursor: pointer\" (click)=\"goBake()\">keyboard_backspace</i>\n    <span style=\"padding-left:10px; font-size:14px; cursor: pointer\" (click)=\"goBake()\">ORGANIZATION</span>\n    <span class=\"example-spacer\"></span>\n    <span style=\"text-align:center\"><span style=\"font-size:20px\">PAYMENT INSIGHTS:</span><br /><span *ngIf=\"currentRiskStatOrg\" style=\"font-size:30px\">{{currentRiskStatOrg.orgID}}</span></span>\n    <span class=\"example-spacer\"></span>\n    <img src=\"../../../assets/Export_Icon2x.png\" alt=\"export icon\" height=\"30px\">\n  </mat-toolbar-row>\n</mat-toolbar>\n<div>\n  <ul class=\"filter-ul\">\n    <li class=\"filter-li\"><a (click)=\"filter('all')\" [ngClass]=\"{'active': selectedFilter == 'all'}\">ALL</a></li>\n    <li class=\"filter-li\"><a (click)=\"filter('suspicious')\" [ngClass]=\"{'active': selectedFilter == 'suspicious'}\">SUSPICIOUS</a></li>\n    <!--li class=\"filter-li\"><a (click)=\"filter('new')\" [ngClass]=\"{'active': selectedFilter == 'new'}\">NEW</a></li>\n    <li class=\"filter-li\"><a (click)=\"filter('discovered')\" [ngClass]=\"{'active': selectedFilter == 'discovered'}\">DISCOVERED</a></li-->\n  </ul>\n</div>\n<mat-card class=\"example-card\">\n  <div class=\"row\" style=\"margin: 0; min-height:300px\">\n    <div *ngIf=\"pieGraphData\" class=\"col-2\">\n      <ul class=\"legend-list\">\n        <li [style.background-color]=\"listFilterDataSet.color\" [ngClass]=\"{'filter-out': !listFilterDataSet.isShow}\" *ngFor=\"let listFilterDataSet of listFilterData; let i = index\" (click)=\"resetFilterList(listFilterDataSet.name)\">\n          <span>{{listFilterDataSet.name}}</span>\n          <span style=\"float:right\">{{listFilterDataSet.value | number:'1.0-5'}}</span>\n        </li>\n        <li style=\"cursor: auto;\">\n          <button class=\"type-selector\" [disabled]=\"!isFilterOn()\" [ngClass]=\"{'disabled': !isFilterOn()}\" (click)=\"filterNone()\"><i class=\"material-icons type-selector-icon\">check</i><span>ALL</span></button>\n          <button class=\"type-selector\" [disabled]=\"isFilterOn()\" [ngClass]=\"{'disabled': isFilterOn()}\" (click)=\"filterAll()\"><i class=\"material-icons type-selector-icon\">close</i><span>ALL</span></button>\n          <span class=\"total-label\" style=\"float:right; font-size:12px; padding-top: 12px; color: gray\">TOTAL {{totalInteract | number:'1.0-5'}}</span>\n        </li>\n      </ul>\n    </div>\n    <div class=\"col-7\" style=\"max-height: 400px\">\n      <p class=\"graph-title\">PAYMENTS</p>\n      <ngx-charts-area-chart-stacked\n        [scheme]=\"colorScheme\"\n        [results]=\"stackGraphData\"\n        legendTitle=\"Legend\"\n        gradient=\"true\"\n        xAxis=\"true\"\n        yAxis=\"true\"\n        autoScale=\"true\"\n        showGridLines=\"false\"\n        roundDomains=\"true\"\n        [curve]=\"curve\">\n      </ngx-charts-area-chart-stacked>\n    </div>\n    <div class=\"col-3\" style=\"max-height: 200px;\">\n      <div style=\"text-align: center;\"><p style=\"margin-top:50px\" class=\"graph-date\">{{thisDate}}</p></div>\n      <div style=\"text-align: center;\">\n        <div style=\"width:20%; float:left; text-align: center; vertical-align:middle\">\n          <p style=\"font-size:10px; margin-top: 3rem;\">STEP ONE:</p>\n          <!-- <p style=\"font-size:10px; margin-top: 2rem;\">STEP TWO:</p> -->\n        </div>\n        <div style=\"width:40%; float:left; text-align: center;\">\n          <p style=\"font-size:10px; margin-top: 1rem;\">SUSPICIOUS</p>\n          <p style=\"margin:0; font-size:14px; font-weight: 600\"><span *ngIf=\"currentRiskStatOrg\" style=\"background-color: rgba(0, 0, 0, 0.05); padding:10px\">{{currentRiskStatOrg.knownSuspiciousInteractionsCount | number:'1.0-5'}}</span></p>\n         <!--  <p style=\"margin:0; font-size:14px; font-weight: 600; margin-top: 1.5rem;\"><span *ngIf=\"currentRiskStatOrg\" style=\"background-color: rgba(0, 0, 0, 0.05); padding:10px\">{{currentRiskStatOrg.knownSuspiciousInteractionsCount2 | number:'1.0-5'}}</span></p> -->\n        </div>\n        <div style=\"width:40%; float:left; text-align: center;\">\n          <p style=\"font-size:10px; margin-top: 1rem;\">TOTAL</p>\n          <p style=\"margin:0; font-size:14px; font-weight: 600\"><span *ngIf=\"currentRiskStatOrg\" style=\"background-color: rgba(0, 0, 0, 0.05); padding:10px\">{{currentRiskStatOrg.knownInteractionCounts | number:'1.0-5'}}</span></p>\n          <!-- <p style=\"margin:0; font-size:14px; font-weight: 600; margin-top: 1.5rem;\"><span *ngIf=\"currentRiskStatOrg\" style=\"background-color: rgba(0, 0, 0, 0.05); padding:10px\">{{currentRiskStatOrg.knownInteractionCounts2 | number:'1.0-5'}}</span></p> -->\n        </div>\n      </div>\n      <ngx-charts-pie-chart\n        [scheme]=\"colorScheme\"\n        [results]=\"pieGraphData\"\n        animations=\"true\"\n        explodeSlices=\"true\"\n        doughnut=\"true\"\n        arcWidth=\"0.5\"\n        gradient=\"false\"\n        (dblclick)=\"dblclick($event)\"\n        (select)=\"select($event)\">\n      </ngx-charts-pie-chart>\n    </div>\n  </div>\n</mat-card>\n<mat-card class=\"example-card\" style=\"margin-top:8px\">\n  <div *ngIf=\"dataReady\">\n    <app-organization-datatable [gridData]=\"gridData\"></app-organization-datatable>\n  </div>\n</mat-card>\n<!--div>\n  <iframe width=\"100%\" height=\"800px\" frameborder=\"0\" src=\"https://swimlane.github.io/ngx-charts/\"></iframe>\n</div-->\n"
 
 /***/ }),
 
@@ -1327,21 +1302,21 @@ var OrganizationComponent = /** @class */ (function () {
             },
         ];
         this.allStackGraphData = [];
-        this.operationalStackGraphData = [];
+        this.suspiciousStackGraphData = [];
         this.stackGraphData = [];
         this.allPieGraphData = [];
-        this.operationalPieGraphData = [];
+        this.suspiciousPieGraphData = [];
         this.pieGraphData = [];
         this.allGraphData = [];
-        this.operationalGraphData = [];
+        this.suspiciousGraphData = [];
         this.allListFilterData = [];
-        this.operationalListFilterData = [];
+        this.suspiciousListFilterData = [];
         this.listFilterData = [];
         this.allCreateDate = [];
         this.curve = d3_shape__WEBPACK_IMPORTED_MODULE_4__["curveBasis"];
         this.selectorList = [];
         this.allGridData = [];
-        this.operationalGridData = [];
+        this.suspiciousGridData = [];
         this.gridData = [];
         this.dataReady = false;
         this.colorScheme = {
@@ -1350,9 +1325,13 @@ var OrganizationComponent = /** @class */ (function () {
         this.allColorScheme = {
             domain: ["#800000", "#e6194B", "#9A6324", "#f58231", "#808000", "#ffe119", "#bcf60c", "#3cb44b", "#aaffc3", "#008080", "#46f0f0", "#000075", "#4363d8", "#911eb4"]
         };
+        this.suspiciousColorScheme = {
+            domain: ["#800000", "#e6194B", "#9A6324", "#f58231", "#808000", "#ffe119", "#bcf60c", "#3cb44b", "#aaffc3", "#008080", "#46f0f0", "#000075", "#4363d8", "#911eb4"]
+        };
         this.selectedFilter = "all";
         this.id = "";
         this.allTotalInteract = 0;
+        this.suspiciousTotalInteract = 0;
         this.totalInteract = 0;
         var self = this;
         self.route.params.subscribe(function (params) {
@@ -1362,7 +1341,7 @@ var OrganizationComponent = /** @class */ (function () {
             //sort riskStatOrg
             var sortedRiskStatOrg = data.riskStatOrg.sort(function (a, b) { return a.date < b.date; });
             //get stackGraphData
-            self.matchedRiskStatData = sortedRiskStatOrg.filter(function (e) { return e.orgID == self.id; });
+            self.matchedRiskStatData = sortedRiskStatOrg.filter(function (e) { return e.orgID === self.id; });
             //get all latestRiskStatOrg
             var s = new Set();
             var latestRiskStatOrg = [];
@@ -1402,11 +1381,13 @@ var OrganizationComponent = /** @class */ (function () {
                     self.latestRiskStatOrgToOrg = tempCombineData;
                     self.organizationService.getOrgTypes().subscribe(function (data) {
                         var customeColor = [];
+                        var suspiciousCustomeColor = [];
                         var gridData = [];
                         var graphData = [];
                         var pieGraphData = [];
                         var listFilterData = [];
                         var totalInteract = 0;
+                        var suspiciousTotalInteract = 0;
                         var stackGraphData = [];
                         data.orgTypes.forEach(function (orgType) {
                             self.orgTypes = data;
@@ -1423,6 +1404,13 @@ var OrganizationComponent = /** @class */ (function () {
                                     series: temp
                                 }]);
                             //get customeColor value
+                            if (!suspiciousCustomeColor && orgType.name != 'Exchanges' && orgType.name != 'Services' && orgType.name != 'Wallet Services' && orgType.name != 'Miners') {
+                                suspiciousCustomeColor = [orgType.color];
+                            }
+                            else if (suspiciousCustomeColor && orgType.name != 'Exchanges' && orgType.name != 'Services' && orgType.name != 'Wallet Services' && orgType.name != 'Miners') {
+                                suspiciousCustomeColor = suspiciousCustomeColor.concat([orgType.color]);
+                            }
+                            ;
                             if (!customeColor) {
                                 customeColor = [orgType.color];
                             }
@@ -1463,20 +1451,31 @@ var OrganizationComponent = /** @class */ (function () {
                             graphData = graphData.concat([{ name: orgType.name, orgs: tempCombineData }]);
                             pieGraphData = pieGraphData.concat([{ name: orgType.name, value: self.currentRiskStatOrg[orgType.name] }]);
                             totalInteract = totalInteract + self.currentRiskStatOrg[orgType.name];
+                            if (orgType.name != 'Exchanges' && orgType.name != 'Services' && orgType.name != 'Wallet Services' && orgType.name != 'Miners') {
+                                suspiciousTotalInteract = suspiciousTotalInteract + self.currentRiskStatOrg[orgType.name];
+                            }
                             listFilterData = listFilterData.concat([{ name: orgType.name, value: self.currentRiskStatOrg[orgType.name], isShow: true, color: orgType.color }]);
                         });
                         self.allStackGraphData = stackGraphData;
+                        self.suspiciousStackGraphData = stackGraphData.filter(function (e) { return e.name != 'Exchanges' && e.name != 'Services' && e.name != 'Wallet Services' && e.name != 'Miners'; });
                         self.stackGraphData = self.allStackGraphData;
                         self.allGridData = gridData;
+                        self.suspiciousGridData = gridData.filter(function (e) { return e.orgType != 'Exchanges' && e.orgType != 'Services' && e.orgType != 'Wallet Services' && e.orgType != 'Miners'; });
                         self.gridData = self.allGridData;
                         self.allPieGraphData = pieGraphData;
+                        self.suspiciousPieGraphData = pieGraphData.filter(function (e) { return e.name != 'Exchanges' && e.name != 'Services' && e.name != 'Wallet Services' && e.name != 'Miners'; });
                         self.pieGraphData = self.allPieGraphData;
                         self.currentRiskStatOrg;
                         self.allListFilterData = listFilterData;
+                        self.suspiciousListFilterData = listFilterData.filter(function (e) { return e.name != 'Exchanges' && e.name != 'Services' && e.name != 'Wallet Services' && e.name != 'Miners'; });
                         self.listFilterData = self.allListFilterData;
                         self.allTotalInteract = totalInteract;
+                        self.suspiciousTotalInteract = suspiciousTotalInteract;
                         self.totalInteract = self.allTotalInteract;
                         self.colorScheme.domain = customeColor;
+                        self.allColorScheme.domain = customeColor;
+                        self.suspiciousColorScheme.domain = suspiciousCustomeColor;
+                        console.log(self.suspiciousColorScheme);
                         self.dataReady = true;
                     });
                 });
@@ -1488,7 +1487,7 @@ var OrganizationComponent = /** @class */ (function () {
             data.orgs.sort((a, b) => new Date(a.createdDate).getTime() - new Date(b.createdDate).getTime());
             self.organizations = data;
             self.allOrgs = self.organizations.orgs.length;
-            self.operationalOrgs = self.organizations.orgs.filter(function(e){return e.operational;}).length;
+            self.suspiciousOrgs = self.organizations.orgs.filter(function(e){return e.operational;}).length;
             self.totalOrgs = self.allOrgs;
             let customeColor = []
             self.orgTypes.orgTypes.forEach(function (orgType) {
@@ -1516,10 +1515,10 @@ var OrganizationComponent = /** @class */ (function () {
                 });
                 self.allGridData = self.allGridData.concat(allGridData);
     
-                let operationalFilterResult = self.organizations.orgs.filter(function(e){return e.orgTypeId == orgType.id && e.operational;});
-                let operationalGridData = [];
-                operationalFilterResult.forEach(function(org){
-                  operationalGridData = operationalGridData.concat([{
+                let suspiciousFilterResult = self.organizations.orgs.filter(function(e){return e.orgTypeId == orgType.id && e.operational;});
+                let suspiciousGridData = [];
+                suspiciousFilterResult.forEach(function(org){
+                  suspiciousGridData = suspiciousGridData.concat([{
                     name: org.name,
                     id: org.id,
                     legacyId: org.legacyId,
@@ -1530,7 +1529,7 @@ var OrganizationComponent = /** @class */ (function () {
                     color: orgType.color
                   }]);
                 });
-                self.operationalGridData = self.operationalGridData.concat(operationalGridData);
+                self.suspiciousGridData = self.suspiciousGridData.concat(suspiciousGridData);
                 let resultDataList = [];
                 let tempValue = 0;
                 self.organizations.orgs.forEach(function(org){
@@ -1559,51 +1558,51 @@ var OrganizationComponent = /** @class */ (function () {
                   }
                 });
     
-                let operationalResultDataList = [];
-                let operationalTempValue = 0;
+                let suspiciousResultDataList = [];
+                let suspiciousTempValue = 0;
                 self.organizations.orgs.filter(function(e){return e.operational;}).forEach(function(org){
-                  if(!operationalResultDataList){
+                  if(!suspiciousResultDataList){
                     if(org.orgTypeId == orgType.id){
-                      operationalTempValue += 1;
-                      operationalResultDataList = [{name: new Date(org.createdDate), value: operationalTempValue}];
+                      suspiciousTempValue += 1;
+                      suspiciousResultDataList = [{name: new Date(org.createdDate), value: suspiciousTempValue}];
                     }
                     else{
-                      operationalTempValue = 0;
-                      operationalResultDataList = [{name: new Date(org.createdDate), value: operationalTempValue}];
+                      suspiciousTempValue = 0;
+                      suspiciousResultDataList = [{name: new Date(org.createdDate), value: suspiciousTempValue}];
                     }
                   }
                   else{
-                    if(self.isInOrgDataList(operationalResultDataList, new Date(org.createdDate)) && org.orgTypeId == orgType.id){
-                      operationalTempValue += 1;
-                      operationalResultDataList[operationalResultDataList.length-1]['value'] = operationalTempValue;
+                    if(self.isInOrgDataList(suspiciousResultDataList, new Date(org.createdDate)) && org.orgTypeId == orgType.id){
+                      suspiciousTempValue += 1;
+                      suspiciousResultDataList[suspiciousResultDataList.length-1]['value'] = suspiciousTempValue;
                     }
-                    else if (!self.isInOrgDataList(operationalResultDataList, new Date(org.createdDate)) && org.orgTypeId == orgType.id){
-                      operationalTempValue += 1;
-                      operationalResultDataList = operationalResultDataList.concat({name: new Date(org.createdDate), value: operationalTempValue});
+                    else if (!self.isInOrgDataList(suspiciousResultDataList, new Date(org.createdDate)) && org.orgTypeId == orgType.id){
+                      suspiciousTempValue += 1;
+                      suspiciousResultDataList = suspiciousResultDataList.concat({name: new Date(org.createdDate), value: suspiciousTempValue});
                     }
                     else if (org.orgTypeId != orgType.id){
-                      operationalResultDataList = operationalResultDataList.concat([{name: new Date(org.createdDate), value: operationalTempValue}]);
+                      suspiciousResultDataList = suspiciousResultDataList.concat([{name: new Date(org.createdDate), value: suspiciousTempValue}]);
                     }
                   }
                 });
     
                 let filterResultforPie = filterResult.length;
-                let operationalFilterResultforPie = operationalFilterResult.length;
+                let suspiciousFilterResultforPie = suspiciousFilterResult.length;
     
                 let filterResultObj = { name : orgType.name, orgs : filterResult };
-                let operationalFilterResultObj = { name : orgType.name, orgs : operationalFilterResult };
+                let suspiciousFilterResultObj = { name : orgType.name, orgs : suspiciousFilterResult };
                 let filterResultforPieGraphObj = {name: orgType.name, value : filterResultforPie};
                 let listFilterObj = {name: orgType.name, value: filterResultforPie, isShow: true, color: orgType.color};
-                let operationalFilterResultforPieGraphObj = {name: orgType.name, value : operationalFilterResultforPie};
-                let operationalListFilterObj = {name: orgType.name, value: operationalFilterResultforPie, isShow: true, color: orgType.color};
+                let suspiciousFilterResultforPieGraphObj = {name: orgType.name, value : suspiciousFilterResultforPie};
+                let suspiciousListFilterObj = {name: orgType.name, value: suspiciousFilterResultforPie, isShow: true, color: orgType.color};
                 self.allGraphData = self.allGraphData.concat(filterResultObj);
-                self.operationalGraphData = self.operationalGraphData.concat(operationalFilterResultObj);
+                self.suspiciousGraphData = self.suspiciousGraphData.concat(suspiciousFilterResultObj);
                 self.allPieGraphData = self.allPieGraphData.concat(filterResultforPieGraphObj);
-                self.operationalPieGraphData = self.operationalPieGraphData.concat(operationalFilterResultforPieGraphObj);
+                self.suspiciousPieGraphData = self.suspiciousPieGraphData.concat(suspiciousFilterResultforPieGraphObj);
                 self.allStackGraphData = self.allStackGraphData.concat({name: orgType.name, series: resultDataList})
-                self.operationalStackGraphData = self.operationalStackGraphData.concat({name: orgType.name, series: operationalResultDataList})
+                self.suspiciousStackGraphData = self.suspiciousStackGraphData.concat({name: orgType.name, series: suspiciousResultDataList})
                 self.allListFilterData = self.allListFilterData.concat(listFilterObj)
-                self.operationalListFilterData = self.operationalListFilterData.concat(operationalListFilterObj);
+                self.suspiciousListFilterData = self.suspiciousListFilterData.concat(suspiciousListFilterObj);
             });
             self.organizationService.getRiskStatOrg().subscribe(data => {
               //sort riskStatOrg
@@ -1629,18 +1628,18 @@ var OrganizationComponent = /** @class */ (function () {
                 }
               })
               self.allGridData = tempAllGridData;
-              //add latestRiskStatOrg data into OperationalGridData
-              let tempOperationalGridData = [];
-              self.operationalGridData.forEach(org => {
+              //add latestRiskStatOrg data into suspiciousGridData
+              let tempSuspiciousGridData = [];
+              self.suspiciousGridData.forEach(org => {
                 if(s.has(org.legacyId)){
                   var index = latestRiskStatOrg.map(function (riskOrg) { return riskOrg.orgID; }).indexOf(org.legacyId)
-                  tempOperationalGridData.push(Object.assign({}, org , latestRiskStatOrg[index]));
+                  tempSuspiciousGridData.push(Object.assign({}, org , latestRiskStatOrg[index]));
                 }
                 else{
-                  tempOperationalGridData.push(Object.assign({}, org));
+                  tempSuspiciousGridData.push(Object.assign({}, org));
                 }
               })
-              self.operationalGridData = tempOperationalGridData;
+              self.suspiciousGridData = tempsuspiciousGridData;
               self.pieGraphData = self.allPieGraphData;
               self.stackGraphData = self.allStackGraphData;
               self.colorScheme.domain = customeColor;
@@ -1665,22 +1664,25 @@ var OrganizationComponent = /** @class */ (function () {
     OrganizationComponent.prototype.filter = function (selected) {
         this.selectedFilter = selected;
         var colorSet = [];
-        colorSet = this.allColorScheme.domain;
         if (selected == "all") {
+            colorSet = this.allColorScheme.domain;
             this.pieGraphData = this.allPieGraphData;
             this.stackGraphData = this.allStackGraphData;
             this.gridData = this.allGridData;
             this.totalOrgs = this.allOrgs;
             this.listFilterData = this.allListFilterData;
             this.colorScheme.domain = colorSet;
+            this.totalInteract = this.allTotalInteract;
         }
-        else if (selected == "operational") {
-            this.pieGraphData = this.operationalPieGraphData;
-            this.stackGraphData = this.operationalStackGraphData;
-            this.gridData = this.operationalGridData;
-            this.totalOrgs = this.operationalOrgs;
-            this.listFilterData = this.operationalListFilterData;
+        else if (selected == "suspicious") {
+            colorSet = this.suspiciousColorScheme.domain;
+            this.pieGraphData = this.suspiciousPieGraphData;
+            this.stackGraphData = this.suspiciousStackGraphData;
+            this.gridData = this.suspiciousGridData;
+            this.totalOrgs = this.suspiciousOrgs;
+            this.listFilterData = this.suspiciousListFilterData;
             this.colorScheme.domain = colorSet;
+            this.totalInteract = this.suspiciousTotalInteract;
         }
     };
     OrganizationComponent.prototype.resetFilterList = function (name) {
@@ -1716,14 +1718,16 @@ var OrganizationComponent = /** @class */ (function () {
         var colorSet = [];
         colorSet = this.allColorScheme.domain;
         if (this.selectedFilter == "all") {
+            colorSet = this.allColorScheme.domain;
             pieGraphDataResult = this.allPieGraphData;
             stackGraphDataResult = this.allStackGraphData;
             gridDataResult = this.allGridData;
         }
         else {
-            pieGraphDataResult = this.operationalPieGraphData;
-            stackGraphDataResult = this.operationalStackGraphData;
-            gridDataResult = this.operationalGridData;
+            pieGraphDataResult = this.suspiciousPieGraphData;
+            stackGraphDataResult = this.suspiciousStackGraphData;
+            gridDataResult = this.suspiciousGridData;
+            colorSet = this.suspiciousColorScheme.domain;
         }
         this.listFilterData.forEach(function (orgType, index) {
             if (!orgType.isShow) {
@@ -1733,10 +1737,10 @@ var OrganizationComponent = /** @class */ (function () {
                 gridDataResult = gridDataResult.filter(function (e) { return e.orgType != orgType.name; });
             }
         });
+        this.colorScheme.domain = colorSet;
         this.pieGraphData = pieGraphDataResult;
         this.stackGraphData = stackGraphDataResult;
         this.gridData = gridDataResult;
-        this.colorScheme.domain = colorSet;
     };
     OrganizationComponent.prototype.filterAll = function () {
         var listFilterData = [];
